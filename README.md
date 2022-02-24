@@ -3,7 +3,7 @@ This code shows you how to send automated email with
 python, 
 We use the smtp library to send the mail and the ssl library
 for encryption, 
-We start by imorting both library
+We start by importing both library
 import smtplib, ssl
 
 To be able to send html content, we need import the 
