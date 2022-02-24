@@ -1,12 +1,16 @@
-import smtplib, ssl
-from email.mime.text import MIMEText
+import smtplib, ssl #smtplib gor sending the mail and ssl for encryption
+from email.mime.text import MIMEText 
 from email.mime.multipart import MIMEMultipart
-sender = 'your sender emai'
-password = 'your receiver password'
-receiver = 'your receiver email'
+
+# MIMEText and MIMEMultipart allow us to send both
+# plain text and html content
+sender = 'your sender email' #input your email
+password = 'your receiver password' #input your password
+receiver = 'your receiver email' #input the receeiver email
 
 message = MIMEMultipart("alternative")
 message["Subject"] = "Let's Help you build your Business"
+# your email sunbject
 message["From"] = sender
 message["To"] = receiver
 
@@ -36,11 +40,16 @@ second_message = MIMEText(html, "html")
 message.attach(first_message)
 message.attach(second_message)
 
-port = 465
+port = 465 # port to use in sendimg the mail, leave it as it is
 smtp_server = 'smtp.gmail.com'
+#smtp server it's always smtp. name of your email provider
+# eg. smtp.mail.yahoo.com
 context = ssl.create_default_context()
+#instantiate the ssl encryption 
 server = smtplib.SMTP_SSL(smtp_server, port, context=context)
-#server.starttls(context=context)
+#indtatiate the smtplib and pass the your email server,
+# port and ssl encryption
 server.login(sender, password)
+# login in with your email and password
 server.sendmail(sender, receiver, message.as_string())
-  
+# send the mail
