@@ -6,7 +6,7 @@ password = 'your receiver password'
 receiver = 'your receiver email'
 
 message = MIMEMultipart("alternative")
-message["Subject"] = "Admission received"
+message["Subject"] = "Let's Help you build your Business"
 message["From"] = sender
 message["To"] = receiver
 
